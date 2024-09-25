@@ -1,0 +1,19 @@
+library(ggplot2)
+library(plotly)
+library(reshape2)
+weather_data <- data.frame(
+  Date = as.Date(c("2023-01-01", "2023-01-02", "2023-01-03", "2023-01-04", "2023-01-05")),
+  Temperature = c(10, 12, 8, 15, 14),
+  Humidity = c(75, 70, 80, 65, 72),
+  WindSpeed = c(15, 12, 18, 20, 16)
+)
+correlation_matrix <- cor(weather_data[, c("Temperature", "Humidity", "WindSpeed")])
+print(correlation_matrix)
+ggplot(weather_data, aes(x = WindSpeed, y = Humidity, color = Temperature)) +
+  geom_point(size = 4) +
+  labs(title = "Wind Speed vs Humidity with Temperature as Color", 
+       x = "Wind Speed (km/h)", y = "Humidity (%)", color = "Temperature (°C)") +
+  theme_minimal()
+plot_ly(weather_data, x = ~Humidity, y = ~WindSpeed, z = ~Temperature, type = "surface")
+plot_ly(weather_data, x = ~Humidity, y = ~Temperature, z = ~WindSpeed, type = "scatter3d", mode = "markers")
+plot_ly(weather_data, x = ~WindSpeed, y = ~Temperature, z = ~Humidity, type = "scatter3d", mode = "markers")
