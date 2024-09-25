@@ -1,0 +1,15 @@
+library(plotly)
+product_data <- data.frame(
+  Product = c("A", "B", "C", "D", "E"),
+  Price = c(50, 70, 60, 45, 55),
+  Rating = c(4.2, 3.8, 4.0, 4.5, 3.9),
+  Age_Group_Num = as.numeric(as.factor(c("25-35", "35-45", "18-25", "45-55", "25-35")))
+)
+plot_ly(product_data, x = ~Price, y = ~Rating, z = ~Age_Group_Num, 
+        type = 'scatter3d', mode = 'markers', text = ~Product)
+plot_ly(product_data, x = ~Price, y = ~Age_Group_Num, z = ~Rating, 
+        type = "surface")
+plot_ly(product_data, x = ~Price, y = ~Rating, z = ~Age_Group_Num, 
+        type = 'scatter3d', mode = 'markers', text = ~Product)
+plot_ly(product_data, x = ~Age_Group_Num, y = ~Rating, z = ~Price, 
+        type = 'scatter3d', mode = 'markers', text = ~Product)
