@@ -1,0 +1,16 @@
+library(plotly)
+environmental_data <- data.frame(
+  Location = c("A", "B", "C", "D", "E"),
+  Temperature = c(15, 20, 18, 12, 17),
+  Humidity = c(65, 70, 68, 60, 72),
+  CO2_Levels = c(400, 450, 420, 380, 430)
+)
+print(environmental_data)
+plot_ly(environmental_data, x = ~Temperature, y = ~Humidity, z = ~CO2_Levels, 
+        type = 'scatter3d', mode = 'markers', text = ~Location)
+plot_ly(environmental_data, x = ~Temperature, y = ~Humidity, z = ~CO2_Levels, 
+        type = "surface")
+plot_ly(environmental_data, x = ~Temperature, y = ~CO2_Levels, z = ~Humidity, 
+        type = 'scatter3d', mode = 'markers', text = ~Location)
+plot_ly(environmental_data, x = ~Humidity, y = ~CO2_Levels, z = ~Temperature, 
+        type = 'scatter3d', mode = 'markers', text = ~Location)
